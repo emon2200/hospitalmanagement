@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Search Appointment{% endblock %}
+
+{% block content %}
+<h1>Search Appointment by ID</h1>
+
+<form method="get" action="{% url 'sa' %}" class="mb-4">
+    <div class="mb-3">
+        <label for="appointment_id" class="form-label">Appointment ID</label>
+        <input type="text" class="form-control" id="appointment_id" name="appointment_id" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+{% endblock %}

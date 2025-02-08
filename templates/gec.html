@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}General Checkups and Examinations{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="text-center mb-4">
+        <h1>General Checkups and Examinations</h1>
+        <p class="lead">Explore our comprehensive checkup packages tailored to your health needs.</p>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-bordered table-hover shadow-sm">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Checkup/Examination</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Fee (BDT)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Basic Health Checkup</td>
+                        <td>Includes blood pressure, heart rate, and basic vitals assessment.</td>
+                        <td>500</td>
+                    </tr>
+                    <tr>
+                        <td>Comprehensive Health Checkup</td>
+                        <td>A detailed examination including blood tests, urine tests, and physical exams.</td>
+                        <td>1500</td>
+                    </tr>
+                    <tr>
+                        <td>Diabetes Screening</td>
+                        <td>Blood sugar level tests to monitor and detect diabetes.</td>
+                        <td>800</td>
+                    </tr>
+                    <tr>
+                        <td>Cardiac Examination</td>
+                        <td>ECG, blood pressure monitoring, and heart health analysis.</td>
+                        <td>2000</td>
+                    </tr>
+                    <tr>
+                        <td>Eye Checkup</td>
+                        <td>Vision testing and general eye health evaluation.</td>
+                        <td>700</td>
+                    </tr>
+                    <tr>
+                        <td>Dental Examination</td>
+                        <td>Basic oral hygiene checkup and cavity detection.</td>
+                        <td>600</td>
+                    </tr>
+                    <tr>
+                        <td>Women's Wellness Checkup</td>
+                        <td>Health screenings including breast and pelvic examinations.</td>
+                        <td>1800</td>
+                    </tr>
+                    <tr>
+                        <td>Men's Wellness Checkup</td>
+                        <td>Health screenings including prostate health evaluations.</td>
+                        <td>1800</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="text-center mt-4">
+        <a href="{% url 'create_appointment' %}" class="btn btn-primary">Book an Appointment</a>
+    </div>
+</div>
+{% endblock %}

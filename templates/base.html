@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Hospital Management System{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <!-- Header Section -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">City University Hospital </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'doctors' %}">Doctors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Notices</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'sa' %}">Search Appointment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'create_appointment' %}">Book Appointment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contacts' %}">Contacts Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Featured Services Section -->
+    <section class="services py-5">
+        <div class="container text-center">
+            <h2>Our Services</h2>
+            <p class="lead mb-5">Discover the range of services we offer to cater to your healthcare needs.</p>
+            <div class="row">
+                <div class="col-md-4">  
+                     <a class="nav-link" href="{% url 'gec' %}">  
+                    <div class="service-box p-4 shadow">  
+                                       
+                            <h3>General Checkup</h3>
+                        <p>Comprehensive health assessments by expert physicians.</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <a class="nav-link" href="{% url 'doctors' %}">
+                    <div class="service-box p-4 shadow">
+                        <h3>Specialist Consultations</h3>
+                        <p>Access to specialists for advanced medical care.</p>
+                    </a>  
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <a class="nav-link" href="{% url 'contacts' %}"> 
+                    <div class="service-box p-4 shadow">
+                        <h3>Emergency Care</h3>
+                        <p>Round-the-clock emergency services for critical conditions.</p>
+                    </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials bg-light py-5">
+        <div class="container text-center">
+            <h2>What Our Patients Say</h2>
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <blockquote class="blockquote">
+                        <p>"The service was exceptional. Highly recommend!"</p>
+                        <footer class="blockquote-footer">saikat</footer>
+                    </blockquote>
+                </div>
+                <div class="col-md-4">
+                    <blockquote class="blockquote">
+                        <p>"They took great care of me during my emergency."</p>
+                        <footer class="blockquote-footer">Hasan</footer>
+                    </blockquote>
+                </div>
+                <div class="col-md-4">
+                    <blockquote class="blockquote">
+                        <p>"A reliable and efficient system for appointments."</p>
+                        <footer class="blockquote-footer">Jisan</footer>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</div>
+    <!-- Footer Section -->
+     <center>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 City University Hospital. All Rights Reserved.</p>
+            <p>
+                Follow us: 
+                <a href="https://www.facebook.com/procyon.emon" target="_blank">
+                    <img src="{% static 'images/fa.png' %}" alt="Facebook" width="30px">
+                </a>
+                <a href="https://www.instagram.com" target="_blank">
+                    <img src="{% static 'images/in.png' %}" alt="Instagram" width="30px">
+                </a>
+                <a href="https://twitter.com" target="_blank">
+                    <img src="{% static 'images/x.png' %}" alt="Twitter" width="30px">
+                </a>
+                <a href="https://www.linkedin.com" target="_blank">
+                    <img src="{% static 'images/l.png' %}" alt="LinkedIn" width="30px">
+                </a>  
+            </p>
+        </div>
+    </footer>
+</center>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

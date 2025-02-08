@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Appointment Details{% endblock %}
+
+{% block content %}
+<h1>Appointment Details</h1>
+
+{% if appointment %}
+    <table class="table table-bordered">
+        <tr>
+            <th>Appointment ID</th>
+            <td>{{ appointment.appointment_id }}</td>
+        </tr>
+        <tr>
+            <th>Patient</th>
+            <td>{{ appointment.patient }}</td>
+        </tr>
+        <tr>
+            <th>Doctor</th>
+            <td>{{ appointment.doctor }}</td>
+        </tr>
+        <tr>
+            <th>Date</th>
+            <td>{{ appointment.appointment_date }}</td>
+        </tr>
+        <tr>
+            <th>Time</th>
+            <td>{{ appointment.appointment_time }}</td>
+        </tr>
+        <tr>
+            <th>Reason</th>
+            <td>{{ appointment.reason }}</td>
+        </tr>
+    </table>
+    <a href="{% url 'create_appointment' %}" class="btn btn-primary">Back to Appointment Form</a>
+{% else %}
+    <p>Appointment not found. Please check the ID and try again.</p>
+{% endif %}
+{% endblock %}

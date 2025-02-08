@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Hospital Home{% endblock %}
+
+{% block content %}
+{% load static %}
+<div style="background-image: url('{% static "images/city.jpg" %}'); background-size: cover; background-position: center; background-repeat: no-repeat; color: white; padding: 50px 20px; min-height: 100vh;">
+    <div class="text-center" style="background-color: rgba(0, 0, 0, 0.5); padding: 20px; border-radius: 15px;">
+        <h1>Welcome to City University Hospital</h1>
+        <p class="mt-3">Manage doctors, patients, and appointments efficiently!</p>
+        <a href="{% url 'create_appointment' %}" class="btn btn-primary mt-3">Book an Appointment</a>
+    </div>
+</div>
+{% endblock %}
