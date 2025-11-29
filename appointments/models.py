@@ -11,6 +11,7 @@ class Appointment(models.Model):
     appointment_date = models.DateField()
     appointment_time = models.TimeField()
     reason = models.TextField() 
+    email=models.EmailField()
 
     def save(self, *args, **kwargs):
         if not self.appointment_id:
@@ -22,3 +23,15 @@ class Appointment(models.Model):
 
     def __str__(self):
         return f"Appointment with {self.doctor.name} on {self.appointment_date}"
+# models.py
+from django.db import models
+
+class UserRegistration(models.Model):
+    fname = models.CharField(max_length=100)
+    email = models.EmailField(unique=True)
+    password = models.CharField(max_length=128)  # Hash করবেন পরে
+    gender = models.CharField(max_length=10)
+    op = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.fname

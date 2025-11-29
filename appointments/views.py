@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect,get_object_or_404
 from appointments.models import Appointment
 from patients.models import Patient
 from .forms import AppointmentForm
+from django.core.mail import send_mail
 
 def create_appointment(request):
     if request.method == 'POST':
@@ -10,6 +11,8 @@ def create_appointment(request):
         if form.is_valid():
             name = form.cleaned_data['name']
             phone = form.cleaned_data['phone']
+            email=form.cleaned_data['email']
+           
 
             # Check if patient already exists
             patient, created = Patient.objects.get_or_create(
@@ -19,6 +22,15 @@ def create_appointment(request):
             appointment = form.save(commit=False)  # Do not save to the database yet
             appointment.patient = patient  # Set the patient relationship
             appointment.save()  # Now save to the database
+            if email:
+                send_mail(
+                    subject="আপনার অ্যাপয়েন্টমেন্ট নিশ্চিতকরণ",
+                    message=f"প্রিয় {name},\n\nআপনার অ্যাপয়েন্টমেন্ট সফলভাবে বুক করা হয়েছে।\nঅ্যাপয়েন্টমেন্ট আইডি:{appointment.appointment_id}\n\nধন্যবাদ!",
+                    from_email="procyonemon@gmail.com",
+                    recipient_list=[email],
+                    fail_silently=False,
+                )
+
             return redirect('success')  
     else:
         form = AppointmentForm()
@@ -44,3 +56,19 @@ def search_appointment(request):
 def appointment_detail(request, appointment_id):
     appointment = get_object_or_404(Appointment, appointment_id=appointment_id)
     return render(request, 'appointment_detail.html', {'appointment': appointment})
+
+from rest_framework import viewsets
+from .models import Appointment
+from .serializers import AppointmentSerializer
+
+class AppointmentViewSet(viewsets.ModelViewSet):
+    queryset = Appointment.objects.all()
+    serializer_class = AppointmentSerializer
+# views.py
+from rest_framework import generics
+from .models import UserRegistration
+from .serializers import UserRegistrationSerializer
+
+class UserRegistrationView(viewsets.ModelViewSet):
+    queryset = UserRegistration.objects.all()
+    serializer_class = UserRegistrationSerializer

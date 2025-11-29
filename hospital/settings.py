@@ -18,6 +18,13 @@ TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
 print(BASE_DIR)
 print(TEMPLATE_DIR)
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'procyonemon@gmail.com'
+EMAIL_HOST_PASSWORD = 'ofyw otag zenz gmsy'  # সরাসরি পাসওয়ার্ড নয়, App Password ব্যবহার করুন
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -28,7 +35,7 @@ SECRET_KEY = 'django-insecure-azu0=fjjdnkxwi_d9wpf13kjqd1^&n!k%m9n94f@cypp-8b5g*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -43,19 +50,39 @@ INSTALLED_APPS = [
     'patients',
     'doctors',
     'appointments',
+    'rest_framework',
+     'corsheaders',
+
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+  
 ]
-
+CORS_ALLOW_ALL_ORIGINS = True
 ROOT_URLCONF = 'hospital.urls'
+
+# Allow custom headers
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "accept-encoding",
+    "authorization",
+    "content-type",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+    "x-client-id",   # তোমার custom header
+]
+X_FRAME_OPTIONS = 'ALLOWALL'
 
 TEMPLATES = [
     {
@@ -129,3 +156,4 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+STATIC_ROOT = BASE_DIR / "staticfiles" 

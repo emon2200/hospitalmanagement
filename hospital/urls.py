@@ -17,6 +17,9 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+
+from hospital import settings
+from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
@@ -28,3 +31,5 @@ urlpatterns = [
     path('contacts', views.contacts, name='contacts'), 
     path('generalcheckup_examiantions/', views.gec, name='gec'),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
